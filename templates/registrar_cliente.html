@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nebula Coffee - Registro de Cliente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #2c2c54, #40407a);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 400px;
+            margin: 80px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+        img.logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #f7d794;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+            color: #f5f6fa;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 6px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            width: 100%;
+            background: #f7d794;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #2c2c54;
+        }
+        button:hover {
+            background: #f5cd79;
+        }
+        .messages {
+            margin-top: 15px;
+        }
+        .success {
+            color: #55efc4;
+        }
+        .danger {
+            color: #ff7675;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo de Nebula Coffee -->
+        <img src="/static/logo.png" alt="Nebula Coffee Logo" class="logo">
+        <h2>Nebula Coffee - Registro de Cliente</h2>
+        <form method="POST">
+            <label>Cédula:</label>
+            <input type="text" name="cedula" required>
+
+            <label>Nombre:</label>
+            <input type="text" name="nombre" required>
+
+            <label>Correo:</label>
+            <input type="email" name="correo" required>
+
+            <button type="submit">Registrar Cliente</button>
+        </form>
+
+        <div class="messages">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <ul>
+                {% for category, message in messages %}
+                  <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>
